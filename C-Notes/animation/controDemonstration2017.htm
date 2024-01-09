@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	  <title>Control Demonstration</title>
+      <script type="text/javascript" src="detectBrowser.js"></script>
+      
+      <!-- ---- To link to this from a web page, add the following lines:
+           
+           This belongs in the <head> section:
+           
+           function setCookie(cookieValue)
+           {
+              var date = new Date();
+              var hours = 2;
+              date.setTime(date.getTime()+(hours*60*60*1000));
+              var expires = "; expires="+date.toGMTString(); // two hour cookie
+   
+              document.cookie="name=" + cookieValue + expires+"; path=/";
+              return true;
+           }
+           
+           Then add a link like the following, with the setCookie argument set to the value of the option you want to initiate
+           
+           <p>See an <a href="demos/controDemonstration2017.htm" target="_blank" 
+           onclick="setCookie('sequence');"> animated demo of a sequence statement</a>.</p>
+      
+      -->
+      
+      <script type="text/javascript">
+         // Set slideShowSpeed (milliseconds)
+         var slideShowSpeed = 1000;
+          
+         var timeOut;
+         var picIterations = 0;
+         var count = 0;
+         var max = 1;
+         var numImages;
+         var preLoad = new Array();
+         var images = new Array();
+		 var initialTime = true;
+          
+	     function prepareAnimation(aniChoice)
+	     {
+	        var fileInfo;
+	        var numSequence = 7;
+	        var numWhile = 17;
+	        var numDoWhile = 15;
+	        var numFor = 16;
+	        var numSelectionIfThenTrue = 8;
+	        var numSelectionIfThenFalse = 6;
+	        var numSelectionIfThenElseTrue = 7;
+	        var numSelectionIfThenElseFalse = 7;
+	        var numSwitch = 8;
+     
+	        if (aniChoice == "sequence")
+	        {
+	           numImages = numSequence;
+	           fileInfo = "images/sequence"; 
+	        }
+	        else if (aniChoice == "while")
+	        {
+	           numImages = numWhile;
+	           fileInfo = "images/while"; 
+	        }
+	        else if (aniChoice == "doWhile")
+	        {
+	           numImages = numFor;
+	           fileInfo = "images/doWhile"; 
+	        }
+	        else if (aniChoice == "for")
+	        {
+	           numImages = numFor;
+	           fileInfo = "images/for"; 
+	        }
+	        else if (aniChoice == "selectionIfThenTrue")
+	        {
+	           numImages = numSelectionIfThenTrue ;
+	           fileInfo = "images/selectionIfThenTrue"; 
+	        }
+	        else if (aniChoice == "selectionIfThenFalse")
+	        {
+	           numImages = numSelectionIfThenFalse;
+	           fileInfo = "images/selectionIfThenFalse"; 
+	        }
+	        else if (aniChoice == "selectionIfThenElseTrue")
+	        {
+	           numImages = numSelectionIfThenElseTrue;
+	           fileInfo = "images/selectionIfThenElseTrue"; 
+	        }
+	        else if (aniChoice == "selectionIfThenElseFalse")
+	        {
+	           numImages = numSelectionIfThenElseFalse;
+	           fileInfo = "images/selectionIfThenElseFalse"; 
+	        }
+	        else if (aniChoice == "switch")
+	        {
+	           numImages = numSwitch;
+	           fileInfo = "images/switch"; 
+	        }
+        
+	        for (var ctr = 0; ctr < numImages; ctr++)
+	        {
+	           if (ctr < 10)
+	              images[ctr] = fileInfo + "0" + ctr + ".jpg";
+	           else
+	              images[ctr] = fileInfo + ctr + ".jpg";
+	        }
+     
+	        for (var ctr = 0; ctr < numImages; ctr++)
+	        {
+	           preLoad[ctr] = new Image();
+	           preLoad[ctr].src = images[ctr];
+	        }
+	     }
+     
+	     function setSelected()
+         {
+	         var cookie = getCookieName();
+             //alert(cookie); 
+             var select = document.getElementById("controlType");
+             var notFound = true;
+             var ctr = 0;
+             
+             while ((ctr < select.options.length) && notFound)
+             {
+               //alert("ctr = " + ctr + " value = " + select.options[ctr].value);
+               if (select.options[ctr].value === cookie)
+               {                  
+                  //select.options[ctr].selected = true;
+                  document.getElementById("controlType")[ctr].selected = true;
+                  notFound = false
+               }
+               ctr++;
+             }
+             //if (cookie == "sequence")             
+             //{
+             //   document.getElementById("controlType")[0].selected = true;
+             //}
+             explainControls();
+         }
+         
+         function checkBrowser()
+	     {
+	        alert("Using " + BrowserDetect.browser + ' ' + BrowserDetect.version);
+	     }
+     
+	     function runSlideShow()
+	     {
+	        disableControl("cmdExplain");
+	        disableControl("controlType");
+            disableControl("repeat");
+     
+	        count = 0;
+	        document.images.SlideShow.src = preLoad[picIterations].src;
+        
+	        picIterations = picIterations + 1;
+        
+	        if (picIterations > (numImages-1))
+	        {
+	           picIterations = 0;
+	        }  
+           
+	        if (picIterations == 0) // are we at the end of a full set of slides?
+	        { 
+	           count = count + 1 // this line increments the count
+	           if (count == max)  // have we reached the maximum yet?
+     	      { 
+	             enableControl("cmdExplain");
+	             enableControl("controlType");
+                 enableControl("repeat");
+	             return false; // this line just quits the function, so the slideshow stops.
+	           }
+	        }    
+	        timeOut = setTimeout('runSlideShow()', slideShowSpeed); 
+              
+	     }
+     
+	     //======================================================================================
+          function getCookieName() 
+          {
+             if (document.cookie)
+             {
+                var cookieName="Fred";
+                index = document.cookie.indexOf('name');
+                if (index != -1)
+                {
+                   namestart = (document.cookie.indexOf("=", index) + 1);
+                   nameend = document.cookie.indexOf(";", index);
+                   if (nameend == -1) 
+                   {
+                      nameend = document.cookie.length;
+                   }
+                   cookieName = document.cookie.substring(namestart, nameend);
+                   
+                }
+                return cookieName;
+             }
+             return "No cookie found";
+          }  
+          
+	     function explainControls()
+	     {
+
+             //disableControl("cmdExplain");
+	         //disableControl("controlType");
+             disableControl("repeat");
+	         var sequenceExplanation="In the sequence structure one statement follows another, in order. An animated flowchart of the sequence structure appears in the animation panel.";
+	         var selectionExplanation="Selection, or conditional, statements perform different operations depending on the value of some expression. There are various types of selection structures, including if-then, if-then-else, and switch statements. Select one of those options below for more details.";
+	         var ifThenTrueExplanation = "The if selection structure either performs an action if the condition is true or skips the action if the condition is false. \n\nAn animated flowchart of the if selection structure with a true condition appears in the animation panel. The diamond represents a condition that is tested. If that condition evaluates to true, then the true branch is taken. Otherwise, the structure is exited. The true branch can consist of one or more statements.";
+	         var ifThenFalseExplanation="The if selection structure either performs an action if the condition is true or skips the action if the condition is false. \n\nAn animated flowchart of the if selection structure with a false condition appears in the animation panel. The diamond represents a condition that is tested. If that condition evaluates to false, then the structure is exited and the true branch is bypassed.";
+	         var ifThenElseTrueExplanation = "The if...else selection structure allows the programmer to specify that a different action is to be performed when the condition is true than when the condition is false. \n\nAn animated flowchart of the if...else selection structure with a true condition appears in the animation panel.  The diamond represents a condition that is tested. If that condition evaluates to true, then the true branch is taken.  The true branch can consist of one or more statements.";
+	         var ifThenElseFalseExplanation = "The if...else selection structure allows the programmer to specify that a different action is to be performed when the condition is true than when the condition is false.\n\nAn animated flowchart of the if...else selection structure with a false condition appears in the animation panel.  The diamond represents a condition that is tested. If that condition evaluates to false, then the false branch is taken.  The false branch can consist of one or more statements.";
+	         var switchExplanation = "In a switch structure a condition is evaluated only once and then compared to multiple values. The variable specified after the switch will be compared sequentially with each case until either a match occurs or the end of the switch statement is encountered.  Execution of a particular case statement causes program control to proceed with the first statement after the switch structure.\n\nAn animated flowchart of the switch structure appears in the animation panel. The animation demonstrates an example in which the second case satisfies the condition.";
+	         var iterationExplanation = "There are three primary types of loops: the pre-test loop, the post-test loop, and the count-controlled loop, like for loops. Select one of those options below for more details.";
+	         var whileExplanation = "An animated flowchart of a pre-test loop structure appears in the animation panel. As the name indicates, the condition is tested before entering the loop. JavaScript uses the while loop to implement a pre-test loop. The while loop executes as long as the condition remains true. As soon as the condition becomes false, the loop will terminate. If the condition is initially false, the loop will not be executed even once.";
+	         var doWhileExplanation = "An animated flowchart of a post-test loop structure appears in the animation panel. As the name indicates, the condition is tested after the body of the loop. JavaScript uses the do-while loop to implement a post-test loop. The do-while loop executes as long as the condition remains true. As soon as the condition becomes false, the loop will terminate. If the condition is initially false, the loop will still be executed one time, because the condition is not checked until after the body of the loop.";
+	         var forExplanation = "An animated flowchart of a count-controlled loop structure appears in the animation panel. Although count-controlled loops can be implemented using the while statement, JavaScript provides the for loop for this purpose. Count-controlled loops require the following: (1) the name of a loop control variable, or loop counter, (2) the initial value of the control variable, (3) the increment (or decrement) by which the control variable is modified each time through the loop, and (4) the condition that tests for the final value of the loop control variable (i.e., whether looping should continue. The for repetition structure handles all the details of count-controlled repetition for you.";
+     	    
+	         var selectedIndex = document.getElementById("controlType").selectedIndex;
+	         
+			 // alert("#Selection number is " + selectedIndex);
+			 if (selectedIndex >= 0)
+	         {
+	             var selectedValue = document.getElementById("controlType")[selectedIndex].value;
+                 if (selectedValue == "sequence")
+    	         {
+	                document.getElementById("txtExplanation").value=sequenceExplanation;
+	                aniChoice = "sequence";
+	                document.getElementById("audioPlayer").src = "audio/sequence.mp3";  
+	             }  
+                 else if (selectedValue == "selection")	    
+ 	             {
+	                document.getElementById("txtExplanation").value=selectionExplanation;  
+	                document.images.SlideShow.src = "images/blank.jpg";
+                    aniChoice = "";	
+                    document.getElementById("audioPlayer").src = "audio/selection.mp3";   	            
+	             } 
+                 else if (selectedValue == "selectionIfThenTrue")	    
+ 	             {
+	                document.getElementById("txtExplanation").value=ifThenTrueExplanation;
+	                aniChoice = "selectionIfThenTrue";	  
+	                document.getElementById("audioPlayer").src = "audio/ifThenTrue.mp3";  
+	             } 
+                  else if (selectedValue == "selectionIfThenFalse")	    
+ 	             {
+	                document.getElementById("txtExplanation").value=ifThenFalseExplanation;
+                    aniChoice = "selectionIfThenFalse";	    
+	                document.getElementById("audioPlayer").src = "audio/ifThenFalse.mp3";             
+	             } 
+                 else if (selectedValue == "selectionIfThenElseTrue")	    
+ 	             {
+	                document.getElementById("txtExplanation").value=ifThenElseTrueExplanation;
+	                aniChoice = "selectionIfThenElseTrue";	
+                    document.getElementById("audioPlayer").src = "audio/ifThenElseTrue.mp3"; 
+                 } 
+                 else if (selectedValue == "selectionIfThenElseFalse")	    
+ 	             {
+	                document.getElementById("txtExplanation").value=ifThenElseFalseExplanation;
+	                aniChoice = "selectionIfThenElseFalse";	
+	                document.getElementById("audioPlayer").src = "audio/ifThenElseFalse.mp3";               
+	             } 
+                 else if (selectedValue == "switch")	    
+ 	             {
+	                document.getElementById("txtExplanation").value=switchExplanation;
+	                aniChoice = "switch";	 
+	                document.getElementById("audioPlayer").src = "audio/switch.mp3";             
+	             } 
+                 else if (selectedValue == "iteration")	    
+ 	             {
+	                document.getElementById("txtExplanation").value=iterationExplanation;
+                    aniChoice = "";	 
+                    document.images.SlideShow.src = "images/blank.jpg";
+	                document.getElementById("audioPlayer").src = "audio/iteration.mp3";                 
+	             } 
+                 else if (selectedValue == "while")	    
+ 	             {
+	                document.getElementById("txtExplanation").value=whileExplanation;
+	                aniChoice = "while";	     
+	                document.getElementById("audioPlayer").src = "audio/while.mp3";	         
+	             } 
+                 else if (selectedValue == "doWhile")	    
+ 	             {
+	                document.getElementById("txtExplanation").value=doWhileExplanation;
+	                aniChoice = "doWhile";	
+	                document.getElementById("audioPlayer").src = "audio/doWhile.mp3";              
+	             } 
+                 else if (selectedValue == "for")    
+ 	             {
+     	           document.getElementById("txtExplanation").value=forExplanation;
+     	           aniChoice = "for";	 
+	               document.getElementById("audioPlayer").src = "audio/for.mp3";             
+	             }  
+	             if (selectedValue != "selection" && selectedValue != "iteration")
+	             {
+	                prepareAnimation(aniChoice);
+	                runSlideShow();
+	                var audioSource = document.getElementById("audioPlayer");                    
+                    audioSource.pause();
+                    audioSource.currentTime = 0;
+                    audioSource.play();                                       
+     	        }   
+	         }
+	         else
+	         {
+				if (initialTime)
+				{
+				   initialTime = false;
+				}
+				else
+				{
+				   alert("Please make a selection.");
+				}
+	         }
+
+             
+	     }
+     
+	     function disableControl(controlID)
+	     {
+    	     document.getElementById(controlID).disabled=true;
+	     }
+     
+     
+	     function enableControl(controlID)
+	     {
+    	     document.getElementById(controlID).disabled=false;
+	     }
+	  </script>
+    
+      <style type="text/css">
+         body
+         {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:10pt;
+            color:#000080; 
+            font-weight:bold;
+         }
+         
+         header, footer, section, article 
+         {
+            display: block;
+         }
+         
+         footer, section 
+         {
+            width:70%;
+            margin-left:15%;
+         }   
+         
+         header
+         {
+            background: #EAEAEA;
+            height: 3.5em; 
+            color:brown;
+            padding-left:1em;
+            width:69%;
+            margin-left:15%;
+         }
+         
+         header h1 
+         {
+            height: 100%;
+         }
+
+         header h1::before 
+         {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;  
+            height: 100%;
+         }
+         
+         section
+         {
+            border: thin pink double; 
+            overflow:hidden;  /* This expands the section to surround the embedded items */
+            background: #ffc14d;
+         }
+         
+         article.left 
+         {
+            float: left;
+            width: 43%;            
+            padding: 0.2em;
+         }
+         
+         article.right
+         {
+            float: right;
+            width: 51%;            
+            padding: 0.2em;
+         }
+         
+         article h2
+         {
+           color:white;
+           font-size:1.7em;
+         }
+
+         footer
+         {
+            clear:both;
+            color: #FFFF80;
+            background-color:black;
+            text-align:center;
+            border:black solid thin;
+         }
+         
+         #controlType
+         {
+            width:200px;             
+         }
+         
+         textarea, select, input, button
+         {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:10pt;
+            color:black; 
+            font-weight:bold;         
+         }
+         
+         textarea 
+         {
+	        width: 90%;
+	        height: 22em;
+         }
+         
+         #animationPanel
+         {
+            height:30em;
+            background-color:white;
+            padding-top:.3em;
+            padding-left:.25em;
+         }
+         
+         audio
+         {
+            margin-left:2em;
+            margin-top:1em;
+         }
+         
+         input[type=button]
+         {
+            vertical-align: top; 
+            width: 7em; 
+            height: 7em;
+            margin-left:1em;
+         }
+         
+         input[type=button]:disabled
+         {
+            opacity: 0.3;
+         }
+         
+         button
+         {
+            margin-left:35%;
+            margin-top:1em;
+            height:2em;
+         }
+         
+         button:disabled 
+         {
+            opacity: 0.3;
+         }
+         
+         select
+         {
+            margin-bottom:.5em;
+            width:50%;
+            height:7.6em;
+         }         
+        
+         select:disabled
+         {
+            opacity: 0.3;
+         }
+      </style>    
+   </head>
+
+   <body onload="setSelected();">
+      <header>
+        <h1>Programming Control Demonstration</h1>
+      </header> 
+   
+      <section>
+         <article class="left">
+            <h2>Make a selection:</h2>
+            <select id="controlType" multiple>
+               <option value="sequence">Sequence</option>
+               <option value="selection">--Selection--</option>
+               <option value="selectionIfThenTrue">If with True Condition</option>
+               <option value="selectionIfThenFalse">If with False Condition</option>
+               <option value="selectionIfThenElseTrue">If...Else with True Condition</option>
+               <option value="selectionIfThenElseFalse">If...Else with False Condition</option>
+               <option value="switch">Switch</option>
+               <option value="iteration">--Iteration--</option>
+               <option value="while">While (pre-test)</option>
+               <option value="doWhile">Do-While (post-test)</option>
+               <option value="for">For (count-controlled)</option>
+            </select>  
+            
+            <input id="cmdExplain" type="button" value=" Display&#10;Explanation" onclick="explainControls()" />
+       
+            <textarea name="txtExplanation" id="txtExplanation"></textarea>
+            <audio id="audioPlayer"  controls autoplay></audio>
+         </article>
+         
+         <article class="right">
+            <h2>Animation:</h2>
+            <div id="animationPanel">
+               <img id="SlideShow" src="" alt="" />
+            </div>
+            <button id="repeat" onclick="JavaScript:runSlideShow();" disabled>Repeat animation</button>
+         </article>
+      </section>
+      <footer>
+         <p>A Parker Teaching Tool</p>
+      </footer>      
+
+
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,582 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Cyber Notes Format</title>
+      <meta charset="utf-8">
+      <link href="images/favicon.ico" rel="icon" type="image/png" >
+      <link href="styleSheets/notes2023.css" rel="stylesheet" type="text/css" >
+      <link href="styleSheets/popper2023.css" rel="stylesheet" type="text/css" >  
+      <link href="styleSheets/popperImage2023.css" rel="stylesheet">      
+      <script src="scripts/notes2023.js"></script>
+      <style>
+         p, li
+         {
+            line-height: 1.5;
+         }
+      </style>
+      <script>   
+         //---
+         //
+         //---
+         function showHideAside(asideID)
+         {
+            var asideElt = document.getElementById(asideID);
+            if (asideElt.style.display === "none")
+            {
+               asideElt.style.display = "block";
+            }
+            else
+            {
+               asideElt.style.display = "none";
+            }            
+         }
+      
+         //--------------------------------------------------------------------
+         // This version of swapImg requires that the image to be swapped out
+         // has an id, which is passed to the function along with the URL of
+         // the new image to be displayed. 
+         //--------------------------------------------------------------------
+         function swapImgById(imageId, imgSource1, imgSource2)
+         {
+            if (document.getElementById(imageId).src.indexOf(imgSource1) > -1) 
+            {    
+               document.getElementById(imageId).src = imgSource2;
+               document.getElementById(imageId).title = "Click for the basic image.";
+               document.getElementById("pop").textContent = "detailed image: ";
+            }
+            else
+            {
+               document.getElementById(imageId).src = imgSource1;
+               document.getElementById(imageId).title = "Click for more details.";
+               document.getElementById("pop").textContent = "basic image: ";
+            }
+         }
+
+         function showHideThis(curID) 
+         {
+            var divide = document.getElementById(curID);
+            if (divide.style.display === "none") 
+            {
+               divide.style.display = "block";
+            } 
+         }
+         
+         function preload_image(im_url) 
+         {
+            let img = new Image();
+            img.src = im_url;
+         }
+
+     </script>         
+   </head>
+
+   <body onload="loadPage();preload_image('images/CISdef.png');">
+      <header class="gradient1">
+         <h1>Cyber Notes Format</h1>
+         <img id="logo" class="logo" alt="Class logo." src="images/CIS2.PNG" height="62">
+         <div style="display:none;">
+            <script type="text/javascript">
+               <!--//--><![CDATA[//><!--
+
+               if (document.images) {
+                  img01 = new Image();
+                  img02 = new Image();
+                  img03 = new Image();
+                  img04 = new Image();
+                  img05 = new Image();
+                  img06 = new Image();
+                  img07 = new Image();
+                  img08 = new Image();
+                  img09 = new Image();
+                  img10 = new Image();
+                  img11 = new Image();
+                  img12 = new Image();
+                  img13 = new Image();
+                  img14 = new Image();
+                  
+                  img01.src = "images/CIS.PNG";
+                  img02.src = "images/continuum.png";
+                  img03.src = "images/!index1SmGold.png";
+                  img04.src = "images/!printSmGold.png";
+                  img05.src = "images/!leftArrowSmGray2.png";
+                  img06.src = "images/!rightArrowSmGold.png";
+                  img07.src = "images/!leftArrowSmGold.png";
+                  img08.src = "images/!rightArrowSmGray2.png";
+                  img09.src = "images/!closeSmGold.png";
+                  img10.src = "images/expand.gif";
+                  img11.src = "images/collapse.gif";                  
+                  img12.src = "images/purchase1.png";
+                  img13.src = "images/purchase2.png";
+                  img14.src = "images/CISdef.png";
+               }
+
+               //--><!]]>
+            </script>
+         </div>
+         <div class="clear"><br><hr></div>         
+         <div class="left">
+            <a href="javascript:showIndexW('formatIndex.html', '380')"><img 
+            alt="index" id="idx01" title='Click to display index' src="images/!index1Sm.png" style="border-width: 0; width:47px;" >
+            </a> 
+         </div>        
+         <div id="topNavigation01" class="center" style=" height:47px;">
+            <a style="outline: none;" href="javascript:hideShowPrevious()"><img alt="Disabled back button" 
+            id="backInHeader" src="images/!leftArrowSmGray.png"   
+            style="border-width: 0; width: 47px;" title='Click to go to previous page' ></a>
+            <a style="outline: none;" href="javascript:hideShowNext()"><img 
+            alt="Next Section" id="nextInHeader" src="images/!rightArrowSm.png"  
+            style="border-width: 0;  width:47px;"  title='Click to go to next page' ></a>      
+         </div>
+         <div class="right">
+            <a href="javascript:originalVersion()"><img alt="original version" 
+            id="close" src="images/!closeSm.png" style="display:none;
+            float:right; border-width: 0; width:47px;" title='Click to return to individual sections' ></a>
+            <a href="javascript:printableVersion()"><img alt="printable version" 
+            id="prn" src="images/!printSm.png" style="float:right; 
+            border-width: 0; width:47px;" title='Click to display printable version' ></a>
+         </div>
+      </header>
+
+      <br><br>      
+      <article>
+         <!-- Section 1 -->    
+         <section id="section01"><br><hr>
+            <h5 class="h5">Section 1: <a id="Justification">Justification</a></h5>
+            <p class="rounded" style="background-color:#FFD580; width:80%;">This online presentation format is designed to be 
+            engaging and interactive, and uses the concept of chunking to break down essential course information into smaller 
+            "chunks" that can be more easily remembered and understood. Chunking also means that the sections are easy to reorganize, 
+            omit, or hide and can even be relocated to a different set of notes.</p>
+            
+            <p style="margin-top:3em;">The notes also provide features like a pop-up index that allows students to locate and go 
+            directly to a specific subtopic when working on exercises or a project</p>
+            <p>Another feature is a "Try it" interactive feature for coding or design course notes. This allows students to 
+            apply/test their knowledge without opening an editor or another tab.<p> 
+            <figure class="centered" style="width:85%;">
+               <img src="images/tryit.png" alt="Try it example." >
+               <figcaption class="centered">Example of a "Try It" page.</figcaption>
+            </figure> 
+
+         </section>  
+         <!-- End Section 1 -->
+    
+         <!-- Section 2 -->
+         <section id="section02"><br><hr>  
+            
+            <h5 class="h5" style="margin-bottom:0;">Section 2: <a id="Interactive">Interactive features</a></h5>
+             
+            <p style="display:inline-block; margin-bottom:0;">
+               You can use clickable images to provide progressive details. Here is the <span id="pop">basic image: </span>
+               <img id="swapImage" src="images/web0.jpg" style="height:6em; vertical-align:middle;" title="Click for more details." alt="Basic image." onclick="swapImgById('swapImage', 'images/web0.jpg', 'images/web1.jpg');" >
+            </p>
+			<p>Here is <a href="swapExample.htm" target="_blank">another example</a> from <a href="https://go-kauai.com/parkerkr/Protected/INFO2220/notes/webBasics.htm#Web" target="_blank">an actual course</a>.</p>
+            
+            <p>CSS modal windows can be used to reinforce or supplement primary content.</p>
+            <ul>
+            	<li style="padding:0.5em;">You can provide definitions or clarification in a <a href="#P01">CSS modal window.</a></li>
+                <li style="padding:0.5em;">You can provide <a href="#P02">longer explanations.</a></li>
+                <li style="padding:0.5em;">Or, you can provide an <a href="#popImage">explanatory image, graph, or infographic</a>. This one is about presentations</li>
+	       </ul>
+         </section>
+         <!-- End Section 2 -->
+         
+         <!-- Section 3 -->
+         <section id="section03"><br><hr>  
+            <h5 class="h5">Section 3: <a id="Progressive">Progressive reveals</a></h5>
+            <p>Sometimes instructors need to reveal information at their own pace.</p>
+            <div class="rounded" onmouseover="showHideThis('HW')" style="background-color:RGB(252, 186, 3); margin-left:3%;">
+               <p id="HW" style="margin-top:0; margin-bottom:0; display:none; ">
+                  You can make points one at a time.
+               </p>  
+            </div>            
+            
+            <div class="rounded" onmouseover="showHideThis('SW1')" style="background-color:RGB(247, 214, 186); margin-left:12%;">
+               <div id="SW1" style="margin-top:0; margin-bottom:0; display:none;">
+                  <p style="margin-top:0;">
+                     Revealing larger sub-chunks
+                  </p> 
+                  
+                  <ul style="margin-bottom:0;">
+                     <li>You can reveal a list of items, or even a paragraph at once.</li>
+                     <li>Obviously this example shows a list of items.</li>
+                     <li>Of course, you could reveal the list an item at a time if you prefer.</li>
+                     <li>You could even include images like this: <img style="vertical-align:top; width:25%;" src="images/chunking-information.jpg" alt="Chunking Information"></li>
+                     <li>The possibilities are vast!</li>               
+                  </ul>               
+               </div>
+            </div>   
+            
+            <div class="rounded" onmouseover="showHideThis('C')" style="background-color:#ffff00; margin-left:7%;">
+               <p id="C" style="margin-top:0; margin-bottom:0; display:none; ">
+                  Vibrant presentations help to engage students.
+               </p>  
+            </div>  
+            
+            <div class="rounded" onmouseover="showHideThis('O')" style="margin-left:10%; margin-bottom:2em;">
+            <p id="O" style="margin-top:0; margin-bottom:0; display:none; ">
+                Presenting seemingly incomplete visuals and revealing information gradually will make the audience curious about the omitted details and, therefore, ensure a higher retention level.
+            </p> 
+            </div>            
+
+         </section>
+         <!-- End Section 3 -->     
+
+         <!-- Section 4 -->
+         <section id="section04"><br><hr>  
+            <h5 class="h5">Section 4: <a id="Arrangements">Flexible arrangements</a></h5>
+            <p>You can show definitions or other brief information with bubble links.</p>
+            <div class="circle">
+              <div><a href="#circle01" style="color:white;">Chunking</a></div>
+            </div>
+            <div style="margin-left:12%; margin-top:-35px; background-color: RGB(0,0,255);" class="circle">
+              <div style="top: 40px;"><a href="#circle02" style="color:white;">Interactivity</a></div>
+            </div>  
+            <div style="margin-left:25%; margin-top:-135px; background-color: yellow;" class="circle">
+              <div style="top: 40px;"><a href="#circle03" style="color:white;">Portability</a></div>
+            </div> 
+            <div style="margin-left:35%; margin-top:-225px; margin-bottom:10em; background-color: pink;" class="circle">
+              <div style="top: 40px;"><a href="#circle04" style="color:white;">Embedding</a></div>
+            </div>             
+
+         </section>
+         <!-- End Section 4 -->     
+
+         <!-- Section 5 -->
+         <section id="section05"><br><hr>
+            <h5 class="h5">Section 5: <a id="PlainText">Even plain text can be "prettified"</a></h5>         
+            <div class="rounded" style="background-color:RGB(167, 205, 149);margin-top:0em;margin-bottom:1em;margin-left:2%;">
+               <p style="margin-top:0; margin-bottom:0;">Development tools...</p>
+               <ul style="margin-top:0; margin-bottom:0;">
+                  <li>...the notes can be developed using HTML, CSS, and JavaScript...</li>
+                  <li>...development of an editor is being pondered to help those who do not know HTML, CSS, and JavaScript...</li>
+                  <li>...this format was initially to both help my teaching and to help me learn the basic front-end development tools.</li>
+               </ul>  
+            </div>
+            <p class="rounded" style="margin-top:1em;margin-bottom:3em;margin-left:8%;">
+               Students often comment in course evaluations that they love the online notes, with comments like "I liked the simple, but effective layout of the notes and the constant access we had to them" and "Class periods just flew by, but were packed with information. The class notes, including tons of resources and examples were invaluable in understanding the material."
+            </p>           
+
+         </section>
+         <!-- End Section 5 -->   
+
+         <!-- Section 6 -->
+         <section id="section06"><br><hr>  
+            <h5 class="h5">Section 6: <a id="Shapes">More shapes</a></h5>
+            <p style="line-height:normal;">Colorful shapes are not limited to rounded rectangles or circles.</p>
+            <p style="line-height:normal;">Rounded rectangles are called many things, but no one agrees on an official name.</p>
+            <div class="oval" style="width:45vw; height:30vh; background-color:RGB(206, 212, 28); margin-top:2vh; margin-bottom:2em;margin-left:4vw;">
+               <p style="line-height:normal; font-size:2.5vmin; margin-top:2em; margin-left:8em; font-weight:bold;">They are often referred to as</p>            
+               <ul style="font-size:2.5vmin; margin-left:7.6em;">
+                  <li style="line-height:normal;">stadiums</li>
+                  <li style="line-height:normal;">discorectangles</li>
+                  <li style="line-height:normal;">obrounds</li>
+                  <li style="line-height:normal;">capsule shapes</li>
+               </ul>
+            </div>
+            <div class="oval" style="width:35vw; height:14vh; background-color:RGB(240, 149, 215);margin-top:-3em;margin-bottom:2em;margin-left:20%;">
+               <p style="line-height:normal; font-size:2.3vmin; margin-top:2vh; margin-left:10vw; margin-bottom:0.3em; font-weight:bold;">My personal favorites</p>            
+               <ul style="font-size:2.3vmin; margin-left:9.8vw; margin-top:0.5em;">
+                  <li style="line-height:normal;">roundtangles</li>
+                  <li style="line-height:normal;">squircles</li>
+               </ul>
+               
+               <div class="callout" style="margin-top:-18em; margin-left:30em;">
+                  <p style="font-size:2.3vmin;">You can do <a href="#popImage2">many more shapes</a>.</p>
+               </div>
+            </div>  
+
+            <!--
+            <div id="heart">
+               <p style="line-height:normal; font-size:2.3vmin;font-weight:bold;">My personal favorites</p>            
+               <ul style="font-size:2.3vmin;">
+                  <li style="line-height:normal;">roundtangles</li>
+                  <li style="line-height:normal;">squircles</li>
+               </ul>               
+            </div>
+            -->
+         </section>
+         <!-- End Section 6 -->   
+
+         <!-- Section 7 -->
+         <section id="section07"><br><hr>  
+            <h5 class="h5">Section 7: <a id="Lists">Engaging list items</a></h5>
+            <p>Lists can also become more visually engaging.</p>
+            <ul>
+            	<li style="border: 1px solid red; border-radius: 15px; padding:0.5em; width:45%;">List item 1</li>
+            	<li style="border: 1px solid red; border-radius: 15px; padding:0.5em; width:45%;">List item 2</li>
+                <li style="border: 1px solid red; border-radius: 15px; padding:0.5em; width:45%;">List item 3</li>
+	       </ul>
+         </section>
+         <!-- End Section 7 -->   
+
+         <!-- Section 8 -->
+         <section id="section08"><br><hr>  
+            <h5 class="h5">Section 8: <a id="Indentation">Varied indentation</a></h5>
+            <div class="rounded" style="margin-top:0em; margin-bottom:1em; margin-left:2%;">
+               <p style="margin-top:0;">By changing things up a bit, you can make more of an impact.</p>
+               <ul style="margin-bottom:0;">
+            	   <li>In this example we use varied indentation to demonstrate the impact of small changes.</li>
+            	   <li>While not groundbreaking, it decreases the monotony.</li>
+	           </ul>
+            </div>
+           
+            <p class="rounded" style="background-color:RGB(224, 218, 92); margin-top:1em; margin-bottom:1em; margin-left:4%;">
+               Our lecture items may not be any more exciting, but at least they look different.
+            </p>
+            
+           <p class="rounded" style="background-color:RGB(167, 205, 149);margin-top:1em; margin-bottom:1em; margin-left:6%;">
+              Obviously you can mix things up however you want.
+           </p>
+           <p  class="rounded" style="background-color:RGB(224, 218, 92); margin-top:1em; margin-bottom:1em; margin-left:4%;">
+              You may have noticed that the "chunk" about shapes even overlapped items.
+           </p>
+           <p class="rounded" style="margin-top:1em; margin-bottom:1em; margin-left:2%;">
+              Students like to see variety, and you can combine shapes, indention, overlapping, and colors however you wish.
+           </p>
+         </section>
+         <!-- End Section 8 -->   
+
+         <!-- Section 9-->
+         <section id="section09"><br><hr>  
+            <div class="flex-container">
+               <section style="margin-top:-0.6em;">
+                  <h5 class="h5">Section 9: <a id="Expanding">Expanding sections</a></h5>   
+
+                  <p>Rather than using a mouseover as seen earlier, use can click on a plus sign to expand a portion of the lecture. Here are some of the benefits of this type of notes:</p>
+                    
+                  <ul>
+                     <li>
+                         <h4 style="color:#a1861f;">Not Powerpoint!
+                         <a href="javascript:showHideDiv('expandPPDiv', 'expandPP')">
+                           <img id="expandPP" alt="Expand section." class="plus" style="vertical-align: text-bottom;" src="images/expand.gif">
+                         </a></h4>
+                         <div id="expandPPDiv" class="rounded" style="display: none; background-color:#eded4e; margin-left:3%;">
+                            <p style="padding-top:1em; margin-bottom:0;">
+                               "Power corrupts. Powerpoint corrupts absolutely."<br style="margin-bottom:0.5em;">
+                               Have you ever been an audience participant viewing an endless PowerPoint presentation...counting minutes and slides 
+                               until the ordeal is finally over?<br style="margin-bottom:0.5em;">
+                               Death by PowerPoint implies a really bad presentation. This might include text-heavy slides, confusing graphics, a 
+                               presenter reading out 50 slides before a yawning audience or even a dysfunctional slide deck, marred by technical 
+                               glitches and the inability of the presenter to cope with the pressure of presenting his/her slides. 
+                            </p>
+                         </div>
+                      </li>
+            	      <li>
+                         <h4 style="color:#a1861f;">More complete content
+                         <a href="javascript:showHideDiv('expandMCDiv', 'expandMC')">
+                           <img id="expandMC" alt="Expand section." class="plus" style="vertical-align: text-bottom;" src="images/expand.gif">
+                         </a></h4>
+                         <div id="expandMCDiv" class="rounded" style="display: none; background-color:#eded4e; margin-left:3%;">
+                            <p style="padding-top:1em; margin-bottom:0;">
+                               One objection to Powerpoint is that only the main points are presented (often as bullet lists) but the presenter 
+                               (hopefully) fills in the gaps verbally. But what if you missed class? What if you missed an important point while 
+                               recording notes about a previous point? <br style="margin-bottom:0.5em;">
+                               Instructors can use expanding sections to provide the missing content, and decide to reveal it or not. One can still 
+                               embrace brevity while providing the essential details, whether they are revealed in the lecture or not.
+                            </p>
+                         </div>
+                      </li>                
+            	      <li>
+                         <h4 style="color:#a1861f;">Easily shared with students
+                         <a href="javascript:showHideDiv('expandShDiv', 'expandSh')">
+                           <img id="expandSh" alt="Expand section." class="plus" style="vertical-align: text-bottom;" src="images/expand.gif">
+                         </a></h4>
+                         <div id="expandShDiv" class="rounded" style="display: none; background-color:#eded4e; margin-left:3%;">
+                            <p style="padding-top:1em; margin-bottom:0;">
+                               With the notes on the web, as long as they have access to a browser and Internet students can view them anywhere.<br style="margin-bottom:0.5em;">
+                               You can accomplish the same thing with Powerpoint presentations, but students either have to have access to Powerpoint or the instructor has to 
+                               have published the presentation to the web. But it's still Powerpoint!
+                            </p>
+                         </div>
+                      </li>
+                      <li>
+                         <h4 style="color:#a1861f;">Sidebars
+                         <a href="javascript:showHideDiv('expandSBDiv', 'expandSB'); showHideAside('demoAside');">
+                           <img id="expandSB" alt="Expand section." class="plus" style="vertical-align: text-bottom;" src="images/expand.gif">
+                         </a></h4>
+                         <div id="expandSBDiv" class="rounded" style="display: none; background-color:#eded4e; margin-left:3%;">
+                            <p style="padding-top:1em; margin-bottom:0;">
+                               Sidebars started in print media as a short news story or graphic accompanying and presenting sidelights of a 
+                               major story.<br style="margin-bottom:0.5em;">
+                               An instructor can accomplish the same thing using an aside, like the one seen to the right, to provide background information or additional 
+                               details about the topic.<br style="margin-bottom:0.5em;">I often use them to provide information that may interest
+                               some students, but isn't essential information - and isn't on the exam!
+                            </p>
+                         </div>                   
+                      </li>
+                      <li>
+                         <h4 style="color:#a1861f;">Not static
+                         <a href="javascript:showHideDiv('expandStDiv', 'expandSt')">
+                           <img id="expandSt" alt="Expand section." class="plus" style="vertical-align: text-bottom;" src="images/expand.gif">
+                         </a></h4>
+                         <div id="expandStDiv" class="rounded" style="display: none; background-color:#eded4e; margin-left:3%;">
+                            <p contenteditable style="padding-top:1em; margin-bottom:0;">
+                               A presentation does not have to be static. The text inside any HTML element can be made editable by adding the 
+                               contenteditable attribute.<br style="margin-bottom:0.5em;">Students can use it to take notes, instructors can use 
+                               it to work out problems - it's cool! <br style="margin-bottom:0.5em;">One person wrote "It’s amazing that adding 
+                               one attribute to an HTML element enables typing, selection, keyboard navigation, spell checking, drag and drop, 
+                               pasting, and undo capabilities."<br style="margin-bottom:0.5em;">Oh, this paragraph is editable if you want to give 
+                               it a whirl.
+                            </p>
+                         </div>                   
+                      </li>
+                   </ul>
+               </section>
+               <aside id="demoAside" style="margin-top:1em; height: 40vh; display: none;">
+                  <h4>Example of an aside</h4>
+                  <p>The aside element represents a section of a page that consists of content that is tangentially related to the content around the aside element, and which could be considered separate from that content.</p>
+                  <p>Such sections are often represented as sidebars in printed typography.</p>
+               </aside> 
+            </div>
+         </section>
+         <!-- End Section 9 -->   
+
+         <!-- Section 10 -->
+         <section id="section10"><br><hr>  
+            <h5 class="h5">Section 10: <a id="Summary">Video</a></h5>
+            <div class="rounded" style="background-color:RGB(256, 204, 0);margin-left:3%;">
+               <p style="margin-top:0;">This is an example of an embedded video.</p>
+
+               <p><a href="http://www.youtube.com/embed/7_LPdttKXPc" target="_blank">How the Internet works</a></p>
+               <video id="video01" controls="" preload="none" width="560" height="315" ">
+                  <source src="video/howInternetWorks.mp4" type="video/mp4">
+                  Your browser does not support the video element.
+               </video>
+            </div>			   
+         </section>
+         <!-- End Section 10 -->   
+
+          <!-- Section 11 -->
+         <section id="section11"><br><hr>  
+            <h5 class="h5">Section 11: <a id="Summary">Animation</a></h5>
+               <p style="margin-top:0;">This is an example not only of an animation, but also of an embedded webpage.</p>
+               <iframe style="width:100%; height:50em;" src="animation/controDemonstration2017.htm" style="border:0px;" allowfullscreen=""></iframe> 
+            
+         </section>
+         <!-- End Section 11 -->
+		 
+         <!-- Section 12 -->
+         <section id="section12"><br><hr>  
+            <h5 class="h5">Section 12: <a id="Summary">Summary</a></h5>
+            <div class="rounded" style="background-color:RGB(256, 204, 0);margin-left:3%;">
+               <p style="margin-top:0;">Presentations are essential in class, whether you teach by lecture, use a flipped classroom, or teach remotely. </p>
+               <ul style="margin-bottom:0;">
+            	  <li>Powerpoint has many advantages, but instructors who want to liven things up may prefer a different approach.</li>
+	           </ul>
+            </div>
+            <p class="rounded" style="background-color:RGB(216, 190, 237);">
+               This online notes format is not the solution to every presentation, but my students have indicated that they greatly prefer this format over Powerpoint.
+            </p>            
+         </section>
+         <!-- End Section 12 -->		 
+
+   
+         
+	 </article>  
+     <div id="SW" class="modalDialog">
+         <div>
+            <span onclick="document.getElementById('SW').style.display='none';
+            document.getElementById('SW').style.display='block';
+            history.back();" 
+            class="close">&#10005;</span>
+            <h4 style="color:#a1861f;">Software types</h4>
+            <p>Application software is meant to enable the user to carry out some specific set of tasks or functions.</p>	
+            <p>System software is meant to manage  system resources, and provides a platform for running the application software.</p>            
+         </div>	
+      </div> 
+      
+     <div id="P01" class="modalDialog">
+         <div>
+            <span onclick="document.getElementById('P01').style.display='none';
+            document.getElementById('P01').style.display='block';
+            history.back();" 
+            class="close">&#10005;</span>            
+            <p>Modals add "good friction" to a user's workflow and convey important information necessary for a positive learning experience.</p>	
+         </div>	
+      </div>       
+
+     <div id="P02" class="modalDialog">
+         <div>
+            <span onclick="document.getElementById('P02').style.display='none';
+            document.getElementById('P02').style.display='block';
+            history.back();" 
+            class="close">&#10005;</span>            
+            <p>A CSS modal window requires the user to focus on a specific window before continuing. </p>
+            <p>CSS modal windows behave like JavaScript pop-ups, but are not typically disabled when a browser is set to block pop-ups.</p>
+         </div>	
+      </div>        
+      
+
+
+      <div id="circle01" class="modalDialog">
+         <div>
+            <span onclick="document.getElementById('circle01').style.display='none';
+            document.getElementById('circle01').style.display='block';
+            history.back();" 
+            class="close">&#10005;</span>            
+            <p>Chunking, as an instructional design technique, is a process whereby information is broken down into smaller “chunks” so that they can be more easily remembered and understood.</p>
+         </div>	
+      </div>      
+      
+      <div id="circle02" class="modalDialog">
+         <div>
+            <span onclick="document.getElementById('circle02').style.display='none';
+            document.getElementById('circle02').style.display='block';
+            history.back();" 
+            class="close">&#10005;</span>            
+            <p>Interactive presentations require user actions to accomplish a task. This can be a professor presenting the lecture, or online learners exploring on their own.</p>
+         </div>	
+      </div>  
+
+      <div id="circle03" class="modalDialog">
+         <div>
+            <span onclick="document.getElementById('circle03').style.display='none';
+            document.getElementById('circle03').style.display='block';
+            history.back();" 
+            class="close">&#10005;</span>            
+            <p>Portability refers to the fact that everything is online. If a student has a phone or laptop, the notes are available wherever they go. In addition, the complete set of notes is downloaded at the beginning, although only a chunk at a time is displayed.</p>
+         </div>	
+      </div>    
+
+      <div id="circle04" class="modalDialog">
+         <div>
+            <span onclick="document.getElementById('circle04').style.display='none';
+            document.getElementById('circle04').style.display='block';
+            history.back();" 
+            class="close">&#10005;</span>            
+            <p>The notes can include embedded videos, embedded websites, embedded pdf files, and embedded links.</p>
+         </div>	
+      </div>        
+
+      <div id="popImage" class="modalDialog2">
+         <div>
+            <span onclick="document.getElementById('popImage').style.display='none';
+            document.getElementById('popImage').style.display='block';
+            history.back();" 
+            class="close2">&#10005;</span>
+            <img src="images/pptPresentation2.png" style="width:98%;">
+         </div>
+      </div>      
+
+      <div id="popImage2" class="modalDialog2">
+         <div>
+            <span onclick="document.getElementById('popImage2').style.display='none';
+            document.getElementById('popImage2').style.display='block';
+            history.back();" 
+            class="close2">&#10005;</span>
+            <img src="images/cssShapes2.png" style="width:98%;">
+         </div>
+      </div>       
+      
+      <footer>
+         <hr>
+         <a style="outline: none;" href="javascript:hideShowPrevious()"><img alt="Disabled back button" 
+         id="backInFooter" src="images/!leftArrowSmGray.png"  
+         style="border-width: 0; width:47px;"></a>
+         <a style="outline: none;" href="javascript:hideShowNext()"><img 
+         alt="Next Section" id="nextInFooter" src="images/!rightArrowSm.png" 
+         style="border-width: 0; width:47px;" ></a>
+      </footer>
+      
+      
+   </body>
+</html>

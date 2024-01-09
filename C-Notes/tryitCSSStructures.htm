@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+      <title>HTML and CSS Tester</title>
+      <meta charset="utf-8" />
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <link rel="icon" type="image/png" href="../favicon.ico"/>
+      <style type="text/css">
+         body 
+         {
+            margin: 0;
+            padding: 0;
+            color: navy;
+            font-family: Tahoma, sans-serif;
+            font-size: 10pt;
+         }
+          
+         #container 
+         {
+            margin: 1%;
+            padding: 0px;
+            width: 97%;
+            background-color: #EAEAEA;
+         }
+
+         .left, .right 
+         {
+            float: left;
+            width: 47.5%;
+            margin: 1% 0 1% 1%;
+            padding: 0.5%;
+            background-color: #fff;
+         }
+         
+         .right 
+         {
+            float: right;
+            margin: 1% 1% 1% 0;
+            height: 378px;
+            overflow:scroll;
+         }
+         
+         .clear 
+         {
+            height: 0;
+            font-size: 1px;
+            margin: 0;
+            padding: 0;
+            line-height: 0;
+            clear: both;
+         }
+         
+         textarea
+         {
+            color: navy;
+            font-family: Tahoma, sans-serif;
+            font-size: 10pt;
+            width:90%;
+            height: 360px;
+            border: 3px solid #cccccc;
+            padding: 5px;
+            overflow:scroll;    
+         }
+         
+         input
+         {
+            margin-top:1em;
+            margin-left:1em;
+            color: navy;
+            font-family: Tahoma, sans-serif;
+            font-size: 10pt;
+         }
+
+      </style>
+
+      <script type="text/javascript">
+         function testit()
+         {
+            document.getElementById("demo").innerHTML=document.getElementById("code").value;
+         }
+      </script>
+   </head>
+   <body>
+      <div>
+         <input name="tryit" type="submit" value="Edit and Click Me &gt;&gt;" onclick="testit()"/>
+      </div>
+      <div id="container">
+         <div class="left">
+            <textarea id="code">
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;title&gt;My Test Page&lt;/title&gt;
+      &lt;style type="text/css"&gt;
+         li.blush
+         {
+            list-style-image: url(images/icon_redface.gif);
+         }
+         li.sad
+         {
+            list-style-image: url(images/icon_cry.gif);
+         }
+         li.neutral
+         {
+            list-style-image: url(images/icon_neutral.gif);
+         }         
+         li.happy
+         {
+            list-style-image: url(images/icon_smile.gif);
+         }
+         li.grinny
+         {
+            list-style-image: url(images/icon_mrgreen.gif);
+         }   
+         ol li 
+         {
+            list-style-type: upper-roman;
+         } 
+         ol li ol li
+         {
+            list-style-type: lower-roman;
+         }              
+         table
+         {
+            border:thin navy solid; 
+            border-collapse:collapse; 
+            border-spacing:0px;
+            padding:0px;
+            margin:auto;
+            color: green
+         }
+         thead
+         {
+            background-color:#F5FFFA;
+         }
+         tfoot
+         {
+            background-color:#D3D3D3;
+         }
+         td, th
+         {
+            border-collapse:collapse; 
+            border-spacing:0px;
+            border:thin black solid;
+            padding:7px 10px 7px 10px;
+         }
+         aside
+         {
+            border:thin outset navy;
+            font-size:.8em;
+            font-style:italic;
+            background-color:beige;
+            color:navy;
+            float:right;
+            width:30%;
+            padding:3px;
+            margin:20px 3px 3px 3px;
+         }
+         section
+         {
+            border:thin solid black;
+            background-color:#fbbf77;
+            color:brown;
+            padding:5px;
+         } 
+         section header
+         {
+            background-color: #CFCCCC;
+            color: black;
+            vertical-align:middle;
+            border-bottom:thick solid #A9A9A9;
+         }
+      &lt;/style&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+      &lt;h3&gt;Example of CSS for Structure Tags&lt;/h3&gt;
+      &lt;h4&gt;List Items with Images&lt;/h4&gt;
+      &lt;ul&gt;
+         &lt;li class="blush"&gt;This is very embarrassing news.&lt;/li&gt;
+         &lt;li class="sad"&gt;I might even cry.&lt;/li&gt;
+         &lt;li class="neutral"&gt;Maybe things will get better.&lt;/li&gt;
+         &lt;li class="happy"&gt;I love this class!&lt;/li&gt;
+      &lt;/ul&gt;
+      
+      &lt;hr/&gt;
+      
+      &lt;h4&gt;Ordered List with Roman Numerals&lt;/h4&gt;
+      &lt;ol&gt;
+         &lt;li&gt;1510 is written MDX, not XDM or DXM or other combinations.&lt;/li&gt;
+         &lt;li&gt;100 is not written LL (not a power of ten) or XXXXXXXXXX (too many repeated Xs). &lt;/li&gt;
+         &lt;li&gt;
+            CCXLIII = 100 + 100 + (50 - 10) + 1 + 1 + 1 = 243.
+            &lt;ol&gt;
+               &lt;li&gt;45 isn't VL because V (5) isn't a power of ten.&lt;/li&gt;
+               &lt;li&gt;99 isn't IC because I (1) is 1/100th of C (100), not 1/10th.&lt;/li&gt;
+               &lt;li&gt;49 isn't IL because I (1) is 1/50th of L (50), not 1/5th.&lt;/li&gt;
+               &lt;li&gt;100 isn't XCX because X (10) isn't smaller than itself.&lt;/li&gt;
+            &lt;/ol&gt; 
+         &lt;/li&gt;
+      &lt;/ol&gt;
+      
+      &lt;hr/&gt;
+            
+      &lt;h4&gt;Example Table for Experimentation&lt;/h4&gt;      
+      &lt;table&gt;
+         &lt;thead&gt;
+            &lt;tr&gt;
+               &lt;th&gt;Content Model&lt;/th&gt;
+               &lt;th&gt;Description&lt;/th&gt;
+            &lt;/tr&gt;
+         &lt;/thead&gt;
+         &lt;tbody&gt;
+            &lt;tr&gt;
+               &lt;td&gt;Metadata&lt;/td&gt;
+               &lt;td&gt;Content that sets up the presentation or behavior of the rest of the content.&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+               &lt;td&gt;Embedded&lt;/td&gt;
+               &lt;td&gt;Content that imports another resource into the document.&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+               &lt;td&gt;Interactive&lt;/td&gt;
+               &lt;td&gt;Content that is specifically intended for user interaction.&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+               &lt;td&gt;Phrasing&lt;/td&gt;
+               &lt;td&gt;The text of the document, as well as elements usded to mark up the text within paragraph level structures.&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+               &lt;td&gt;Heading&lt;/td&gt;
+               &lt;td&gt;Defines the header of a section (whether explicitly marked up using sectioning content elements, or implied by the heading content itself).&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+               &lt;td&gt;Sectioning&lt;/td&gt;
+               &lt;td&gt;Content that defines the scope of headings and footers.&lt;/td&gt;
+            &lt;/tr&gt;
+         &lt;/tbody&gt;
+         &lt;tfoot&gt;
+            &lt;tr&gt;
+               &lt;th colspan="2"&gt;Information from http://blog.tangcs.com/2011/09/05/html5-content-models-and-outline-algorithm/&lt;/th&gt;
+            &lt;/tr&gt;
+         &lt;/tfoot&gt;
+      &lt;/table&gt;   
+
+      &lt;hr/&gt;
+            
+      &lt;h4&gt;Example Section with Aside&lt;/h4&gt;
+
+      &lt;section&gt;
+         &lt;header&gt;
+            &lt;h1&gt;Example of a Chunk&lt;/h1&gt;
+         &lt;/header&gt;
+         &lt;aside&gt;This is a quotation about things worth believing in from the movie &lt;cite&gt;Second Hand Lions&lt;/cite&gt;.&lt;/aside&gt;
+         &lt;p&gt;"Sometimes the things that may or may not be true are the things a man needs to believe in the most. That people are basically good; that honor, courage, and virtue mean everything; that power and money, money and power mean nothing; that good always triumphs over evil; and I want you to remember this, that love... true love never dies. You remember that, boy. You remember that. Doesn't matter if it's true or not. You see, a man should believe in those things, because those are the things worth believing in."&lt;/p&gt;
+      &lt;/section&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+         </textarea>
+         </div><!-- left -->
+         <div id="demo" class="right">
+         </div><!-- right -->
+         <div class="clear"></div>
+      </div><!-- container -->
+      
+   </body>
+</html>

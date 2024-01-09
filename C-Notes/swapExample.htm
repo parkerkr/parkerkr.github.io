@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Cyber Notes Format</title>
+      <meta charset="utf-8">
+      <link href="images/favicon.ico" rel="icon" type="image/png" >
+      <link href="styleSheets/notes2023.css" rel="stylesheet" type="text/css" >
+
+      <script src="scripts/notes2023.js"></script>
+
+      <script>   
+         //---
+         //
+         //---
+         function showHideAside(asideID)
+         {
+            var asideElt = document.getElementById(asideID);
+            if (asideElt.style.display === "none")
+            {
+               asideElt.style.display = "block";
+            }
+            else
+            {
+               asideElt.style.display = "none";
+            }            
+         }
+      
+         //--------------------------------------------------------------------
+         // This version of swapImg requires that the image to be swapped out
+         // has an id, which is passed to the function along with the URL of
+         // the new image to be displayed. 
+         //--------------------------------------------------------------------
+         function swapImgById(imageId, imgSource1, imgSource2)
+         {
+            if (document.getElementById(imageId).src.indexOf(imgSource1) > -1) 
+            {    
+               document.getElementById(imageId).src = imgSource2;
+               document.getElementById(imageId).title = "Click for the basic image.";
+               document.getElementById("pop").textContent = "detailed image: ";
+            }
+            else
+            {
+               document.getElementById(imageId).src = imgSource1;
+               document.getElementById(imageId).title = "Click for more details.";
+               document.getElementById("pop").textContent = "basic image: ";
+            }
+         }
+
+         function showHideThis(curID) 
+         {
+            var divide = document.getElementById(curID);
+            if (divide.style.display === "none") 
+            {
+               divide.style.display = "block";
+            } 
+         }
+         
+         function preload_image(im_url) 
+         {
+            let img = new Image();
+            img.src = im_url;
+         }
+
+     </script>         
+   </head>
+
+   <body onload="loadPage();preload_image('images/CISdef.png');">
+      <header class="gradient1">
+         <h1>Cyber Notes Format</h1>
+         <img id="logo" class="logo" alt="Class logo." src="images/CIS2.PNG" height="62">
+         <div style="display:none;">
+            <script type="text/javascript">
+               <!--//--><![CDATA[//><!--
+
+               if (document.images) {
+                  img01 = new Image();
+                  img02 = new Image();
+                  
+                  img01.src = "images/imgSwap101.png";
+                  img02.src = "images/imgSwap102.png";
+               }
+
+               //--><!]]>
+            </script>
+         </div>
+         <div class="clear"><br><hr></div>         
+         <div class="left">
+            <a href=""><img 
+            alt="index" id="idx01" title='Click to display index' src="images/!index1Sm.png" style="border-width: 0; width:47px;" >
+            </a> 
+         </div>        
+         <div id="topNavigation01" class="center" style=" height:47px;">
+            <a style="outline: none;" href="javascript:hideShowPrevious()"><img alt="Disabled back button" 
+            id="backInHeader" src="images/!leftArrowSmGray.png"   
+            style="border-width: 0; width: 47px;" title='Click to go to previous page' ></a>
+            <a style="outline: none;" href="javascript:hideShowNext()"><img 
+            alt="Next Section" id="nextInHeader" src="images/!rightArrowSm.png"  
+            style="border-width: 0;  width:47px;"  title='Click to go to next page' ></a>      
+         </div>
+         <div class="right">
+            <a href="javascript:originalVersion()"><img alt="original version" 
+            id="close" src="images/!closeSm.png" style="display:none;
+            float:right; border-width: 0; width:47px;" title='Click to return to individual sections' ></a>
+            <a href="javascript:printableVersion()"><img alt="printable version" 
+            id="prn" src="images/!printSm.png" style="float:right; 
+            border-width: 0; width:47px;" title='Click to display printable version' ></a>
+         </div>
+      </header>
+
+      <br><br>      
+      <article>
+  
+         <!-- Section 1 -->
+         <section id="section01"><br><hr>  
+            
+            <h5 class="h5" style="margin-bottom:0;">Section 1: <a id="Interactive">Example Use of Image Swap</a></h5>
+             
+            <p style="display:inline-block; margin-bottom:0;">
+               You can use clickable images to provide progressive details. Click to reveal more detail.<br><br>
+               <img id="swapImage" src="images/imgSwap101.png" style="height:36em; vertical-align:middle;" title="Click for more details." alt="Basic image." onclick="swapImgById('swapImage', 'images/imgSwap101.png', 'images/imgSwap102.png');" >
+            </p>
+         </section>
+         <!-- End Section 1 -->
+         
+	 </article>  
+      <footer>
+         <hr>
+         <a style="outline: none;" href="javascript:hideShowPrevious()"><img alt="Disabled back button" 
+         id="backInFooter" src="images/!leftArrowSmGray.png"  
+         style="border-width: 0; width:47px;"></a>
+         <a style="outline: none;" href="javascript:hideShowNext()"><img 
+         alt="Next Section" id="nextInFooter" src="images/!rightArrowSm.png" 
+         style="border-width: 0; width:47px;" ></a>
+      </footer>
+      
+      
+   </body>
+</html>
