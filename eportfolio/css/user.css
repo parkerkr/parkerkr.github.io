@@ -1,0 +1,282 @@
+/* This CSS file is created for you to create or override any of the existing CSS styles used in this theme */
+html
+{
+    overflow-y: scroll; 
+}
+
+.rounded
+{
+display: block;
+text-decoration: none;
+border: 1px;
+border-radius: 15px;
+color: #000000;
+background-color: #e6ecff;
+text-align: left;
+font-size: 1em;
+margin: 5px 5px 9px 5px;
+padding: 1em;
+position: relative;
+width:60%;
+} 
+
+
+li.spaced
+{
+	margin-top:6px;
+	margin-bottom:12px;
+}
+
+ol.journal 
+{
+    counter-reset: li 33;  /* set to 1 more than number of journals  */
+    list-style-type: none;
+}
+
+ol.journal > li
+{
+    counter-increment: li -1;
+    position:relative; 
+      margin-left: 0px; 
+      padding-left: 2em;
+}
+
+ol.journal > li:before 
+{
+   content: '[J' counter(li, decimal) '] ';
+   position:absolute; left: -1em;
+}
+
+ol.chapter 
+{
+    counter-reset: li 17;  /* set to 1 more than number of chapters  */
+    list-style-type: none;
+}
+
+ol.chapter > li
+{
+    counter-increment: li -1;
+    position:relative; 
+      margin-left: 0px; 
+      padding-left: 2em;
+}
+
+ol.chapter > li:before 
+{
+   content: '[C' counter(li, decimal) '] ';
+   position:absolute; left: -1em;
+}
+
+ol.proceedings 
+{
+    counter-reset: li 33; /* set to 1 more than number of proceedings  */
+    list-style-type: none;
+}
+
+ol.proceedings > li
+{
+    counter-increment: li -1;
+    position:relative; 
+      margin-left: 0px; 
+      padding-left: 2em;
+}
+
+ol.proceedings > li:before 
+{
+   content: '[P' counter(li, decimal) '] ';
+   position:absolute; left: -1em;
+}
+
+ol.republication 
+{
+    counter-reset: li 5; /* set to 1 more than number of republications  */
+    list-style-type: none;
+}
+
+ol.republication > li
+{
+    counter-increment: li -1;
+    position:relative; 
+      margin-left: 0px; 
+      padding-left: 2em;
+}
+
+ol.republication > li:before 
+{
+   content: '[R' counter(li, decimal) '] ';
+   position:absolute; left: -1em;
+}
+
+ol.talks 
+{
+    counter-reset: li 19; /* set to 1 more than number of presentations  */
+    list-style-type: none;
+}
+
+ol.talks > li
+{
+    counter-increment: li -1;
+    position:relative; 
+      margin-left: 0px; 
+      padding-left: 2em;
+}
+
+ol.talks > li:before 
+{
+   content: '[T' counter(li, decimal) '] ';
+   position:absolute; left: -1em;
+}
+
+ol.report 
+{
+    counter-reset: li 3; /* set to 1 more than number of presentations  */
+    list-style-type: none;
+}
+
+ol.report > li
+{
+    counter-increment: li -1;
+    position:relative; 
+      margin-left: 0px; 
+      padding-left: 2em;
+}
+
+ol.report > li:before 
+{
+   content: '[' counter(li, decimal) '] ';
+   position:absolute; left: -1em;
+}
+
+ol.dissertation 
+{
+    counter-reset: li 2; /* set to 1 more than number of presentations  */
+    list-style-type: none;
+}
+
+ol.dissertation > li
+{
+    counter-increment: li -1;
+    position:relative; 
+      margin-left: 0px; 
+      padding-left: 2em;
+}
+
+ol.dissertation > li:before 
+{
+   content: '[' counter(li, decimal) '] ';
+   position:absolute; left: -1em;
+}
+
+ol.thesis 
+{
+    counter-reset: li 2; /* set to 1 more than number of presentations  */
+    list-style-type: none;
+}
+
+ol.thesis > li
+{
+    counter-increment: li -1;
+    position:relative; 
+      margin-left: 0px; 
+      padding-left: 2em;
+}
+
+ol.thesis > li:before 
+{
+   content: '[' counter(li, decimal) '] ';
+   position:absolute; left: -1em;
+}
+
+img.plus
+{
+   vertical-align:text-bottom; 
+   height:20px; 
+   width:20px; 
+   border-width:0px;
+}
+.width19 {
+   width: 19%;
+}
+.width68 {
+   width: 64%;
+      }
+.width12 {
+   width: 16%;
+}
+      
+body, input, textarea { 
+   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+h1, h2, h3, h4, h5, .entry-title, .home-title, .archive-title, .logo, .menu, .multi-sidebar .tabs { 
+   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+      
+body {
+   background: #F0F0F0;
+}
+#wrapper {
+   box-shadow: none;
+}
+
+.bold {
+   color:black;
+   font-weight:bold;
+}
+
+.indented {
+   margin-left:30px;
+}
+
+h1.other {
+	font-size: 100%;
+	margin-top: 4em;
+	margin-bottom: 0em;
+    color: #7A7A7A;
+	text-transform: uppercase;
+	padding-bottom: 1.5%;
+	border-bottom: 1px solid #EEE;  
+    margin-bottom: 1em;    
+}
+
+h4.noMargin {
+    margin-bottom:0;
+}
+
+p.noMargin {
+    margin-top:0;
+}
+
+
+.italic
+{
+	font-style:italic;
+}
+
+.underline
+{
+	text-decoration:underline;
+}
+
+.ocol4
+{
+    text-align: center;
+}
+
+.ocol5
+{
+    width:5em;
+    text-align: center;
+}
+
+.ocol6
+{
+    width:5em;
+    text-align: center;
+}
+
+.boldred 
+{
+    font-weight:bold;
+    color:red;    
+}
